@@ -1,0 +1,107 @@
+{
+  "name": "md-table",
+  "displayName": "md-table",
+  "description": "Markdown与Html的table快速转换工具",
+  "version": "0.0.2",
+  "publisher": "enlin-liu",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "table.convertToTable",
+        "title": "List to Table"
+      },
+      {
+        "command": "table.convertFromTable",
+        "title": "Table to List"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "table.convertToTable",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        },
+        {
+          "command": "table.convertFromTable",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "esbuild": "^0.25.0",
+    "eslint": "^9.21.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
+
+
+
+{
+  "applicant": "", // 申请人姓名，必填
+  "applyDate": "", // 申请日期，必填
+  "employeeId": "", // 员工工号，必填
+  "phoneNumber": "", // 电话号码，必填
+  "companyEmail": "", // 公司邮箱，必填
+  "department": "", // 所属部门，必填
+  "payee": "", // 收款人，必填
+  "bank": "", // 开户行，必填
+  "bankAccount": "", // 银行账号，必填
+  "paymentUnit": "", // 付款单位，必填
+  "currency": "", // 报销币种，必填
+  "reimbursementAmount": "", // 报销合计，必填
+  "reimbursementReason": "", // 报销事由，必填
+  "attachments": [], // 附件，可上传多个，以数组形式存放附件信息，必填
+  "isAllEInvoice": "", // 是否全为电子票据，必填
+  "costCenterName": "", // 成本中心名称，必填
+  "costCenterCode": "", // 成本中心编码，必填
+  "expenseAllocation": [
+      {
+          "sequence": 1,
+          "expenseType": "", // 费用类型，选填
+          "costDepartment": "", // 费用承担部门，选填
+          "costAmount": "" // 费用承担金额，选填
+      },
+      {
+          "sequence": 2,
+          "expenseType": "", // 费用类型，选填
+          "costDepartment": "", // 费用承担部门，选填
+          "costAmount": "" // 费用承担金额，选填
+      }
+  ]
+}
