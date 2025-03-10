@@ -34,8 +34,6 @@ Markdown与Html的table快速转换工具
 
 ```
 
-
-
 ## 使用方法
 ### 命令方式
 1. 选中Markdown表格，右键点击List to Table实现HTML表格转换。
